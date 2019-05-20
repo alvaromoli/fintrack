@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'devise'
 gem 'twitter-bootstrap-rails'
+gem 'jquery-rails'
 gem 'devise-bootstrap-views'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
