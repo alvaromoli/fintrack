@@ -1,10 +1,24 @@
+<% if params[:action] == 'search' %>
 <div class="results-block">
   <%= bootstrap_flash %>
 </div>
+<% end %>
 <% if @stock %>
 <div class="well results-block">
   <strong>Symbol: </strong> <%= @stock.ticker %>
   <strong>Name: </strong> <%= @stock.name %>
   <strong>Last Price: </strong> <%= @stock.last_price %>
+  <% if current_user.can_add_stock?(@stock.ticker) %>
+    <%= link_to "Add to my favorite", user_stocks_path(user: current_user, stock_ticker: @stock.ticker),
+                                      class: "btn btn-xs btn-warning", method: :post %>
+  <% else %>
+    <span class="label label-default">
+      <% if current_user.stock_already_added?(@stock.ticker) %>
+        added
+      <% elsif !current_user.under_stock_limit? %>
+        limit reached
+      <% end %>
+    </span>
+  <% end %>
 </div>
 <% end %>

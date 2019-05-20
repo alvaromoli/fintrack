@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def portfolio
-    #code
+    @user = current_user
+    @user_stocks = current_user.stocks
   end
 end
