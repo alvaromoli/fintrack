@@ -1,17 +1,13 @@
 class StocksController < ApplicationController
   def search
-    if params[:stock].present?
-      @stock = Stock.new_from_lookpup(params[:stock])
-      if @stock
-        render 'users/portfolio'
-      else
-        flash[:danger] = "You have entered an incorrect stock symbol"
-        redirect_to portfolio_path
-      end
-
+    if params[:stock].blank?
+      flash.now[:danger] = "You have entered an empty search string"
     else
-      flash[:danger] = "You have entered an empty search string"
-      redirect_to portfolio_path
+      @stock = Stock.new_from_lookpup(params[:stock])
+      flash.now[:danger] = "You have entered an incorrect stock symbol" unless @stock
+    end
+    respond_to do |format|
+      format.js { render partial: 'users/result' }
     end
   end
 end
