@@ -10,6 +10,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
+gem "stock_quote", '~> 2.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 # PG para producción
