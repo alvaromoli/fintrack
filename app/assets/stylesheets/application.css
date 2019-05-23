@@ -22,3 +22,12 @@
  .no-padding {
    padding: 0 !important;
  }
+
+ .p-0{
+   padding: 0 !important;
+ }
+
+ .pl-1{
+   padding-left: 15px !important;
+   padding-top: 10px !important;
+ }
